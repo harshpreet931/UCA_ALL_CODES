@@ -1,4 +1,6 @@
-![Banner Image](./Banner.gif)
+![Banner Image](./BannerImg.png)
+
+# UCA Codes Repository
 
 Welcome to my repository for all the UCA Codes I have written. This collection includes various algorithms, data structures, and system calls implemented in C. Dive in to explore and use these codes for your learning and development!
 
