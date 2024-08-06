@@ -6,3 +6,5 @@ Vagrantfile
 
 # Pg_config.sh file
 pg_config.sh
+
+a.out
