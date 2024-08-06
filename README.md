@@ -1,8 +1,6 @@
-# UCA Codes Repository
+![UCA CODES REPOSITORY](./Banner.gif)
 
 Welcome to my repository for all the UCA Codes I have written. This collection includes various algorithms, data structures, and system calls implemented in C. Dive in to explore and use these codes for your learning and development!
-
-![Banner Image](https://via.placeholder.com/800x200.png?text=UCA+Codes+Repository)
 
 ## Table of Contents
 
