@@ -1,0 +1,8 @@
+# Vagrant folder
+.vagrant/
+
+# Vagrant file
+Vagrantfile
+
+# Pg_config.sh file
+pg_config.sh

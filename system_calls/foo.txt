@@ -1,0 +1,2 @@
+Hello! This is from this file.
+THis is the foo.txt file I hope it copies.
