@@ -1,11 +1,11 @@
 #include <stdio.h>
 
 int main(void) {
-    unsigned int a =6235342340;
+    unsigned int a = 128;
 
     int *b = &a;
     char *c = &a;
 
-    printf("%d\n", *b);
-    printf("%d\n", *c);
+    printf("%u \n", *b);
+    printf("%u \n", *c);
 }
