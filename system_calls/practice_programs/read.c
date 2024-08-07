@@ -3,13 +3,15 @@
 #include <unistd.h>
 
 int main() {
+    int fd = open("hello.txt", O_WRONLY | O_CREAT, 0644);
+    char buffer[] = "Hello, World!";
+    // write to this file
+    write(fd, buffer, sizeof(buffer));
+    close(fd);
+
     int fd = open("hello.txt", O_RDONLY);
     char buffer[128];
-    ssize_t b_size;
-    while((b_size = read(fd, buffer, sizeof(buffer)-1)) > 0) {
-        buffer[b_size] = '\0';
-        printf("%s", buffer);
-    }
-    close(fd);
+    // read from this file and print it to console
+    write(1, buffer, read(fd, buffer, sizeof(buffer)));
     return 0;
 }

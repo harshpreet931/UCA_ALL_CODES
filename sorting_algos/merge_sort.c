@@ -1,59 +1,42 @@
 #include <stdio.h>
-#include <assert.h>
 #include <time.h>
 #include <sys/time.h>
 #include <stdlib.h>
+#include <assert.h>
 
-void merge(int arr[], int l, int m, int r) {
-    int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
+void merge(int arr[], int aux[], int left, int mid, int right) {
+    for(int k = left; k <= right; k++) aux[k] = arr[k];
 
-    int L[n1], R[n2];
-
-    for(i = 0; i < n1; i++) L[i] = arr[l + i];
-    for(j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
-
-    i = 0; j = 0; k = l;
-
-    while(i < n1 && j < n2) {
-        if(L[i] <= R[j]) {
-            arr[k] = L[i];
-            i++;
-        } else {
-            arr[k] = R[j];
-            j++;
-        }
-        k++;
-    }
-
-    while(i < n1) {
-        arr[k] = L[i];
-        i++; k++;
-    }
-    while(j < n2) {
-        arr[k] = R[j];
-        j++; k++;
+    int i = left;
+    int j = mid + 1;
+    for(int k = left; k <= right; k++) {
+        if(i > mid) arr[k] = aux[j++];
+        else if(j > right) arr[k] = aux[i++];
+        else if(aux[i] <= aux[j]) arr[k] = aux[i++];
+        else arr[k] = aux[j++];
     }
 }
 
-void merge_sort(int arr[], int l, int r) {
-    if(l < r) {
-        int m = l + (r - l) / 2;
-        
-        merge_sort(arr, l, m);
-        merge_sort(arr, m + 1, r);
-
-        merge(arr, l, m, r);
-    } 
+void merge_sort_r(int arr[], int aux[], int left, int right) {
+    if(left >= right) return;
+    int mid = (left + right) / 2;
+    merge_sort_r(arr, aux, left, mid);
+    merge_sort_r(arr, aux, mid+1, right);
+    merge(arr, aux, left, mid, right);
 }
 
-long long calculate_runtime(int arr[], int n){
+void merge_sort(int arr[], int n) {
+    int * aux = (int *) malloc(n * sizeof(int));
+    merge_sort_r(arr, aux, 0, n-1);
+    free(aux);
+}
+
+long long calculate_runtime(int arr[], int n) {
     struct timeval before;
     gettimeofday(&before, NULL);
     long long before_millis = before.tv_sec*1000LL + before.tv_usec/1000;
 
-    merge_sort(arr, 0, n-1);
+    merge_sort(arr, n);
 
     struct timeval after;
     gettimeofday(&after, NULL);
@@ -62,80 +45,28 @@ long long calculate_runtime(int arr[], int n){
     return after_millis - before_millis;
 }
 
-void initialize_ascending(int arr[], int n) {
-    for(int i = 0; i < n; i++) {
-        arr[i] = i;
-    }
+void test_sample_input() {
+    int arr[] = {3 ,1 ,7 ,9 ,5};:
+    int expected_output[] = {1 ,3 ,5 ,7 ,9};
+
+    merge_sort(arr, 5);
+    for(int i = 0; i < 5; i++) assert(arr[i] == expected_output[i]);
 }
-
-void initialize_descending(int arr[], int n) {
-    for(int i = 0; i < n; i++) {
-        arr[i] = n - i;
-    }
-}
-
-
 
 int main() {
+    test_sample_input();
     srand(time(NULL));
-    int k = 320000;
-    int* arr = (int *)malloc(k * sizeof(int));
-    int* arr2 = (int *)malloc(2 * k * sizeof(int));
-    int* arr3 = (int *)malloc(3 * k * sizeof(int));
-    int* arr4 = (int *)malloc(4 * k * sizeof(int));
-    int* arr5 = (int *)malloc(5 * k * sizeof(int));
-    int* arr6 = (int *)malloc(6 * k * sizeof(int));
 
-    for(int i = 0; i < k; i++) arr[i] = rand();
-    for(int i = 0; i < 2 * k; i++) arr2[i] = rand();
-    for(int i = 0; i < 3 * k; i++) arr3[i] = rand();
-    for(int i = 0; i < 4 * k; i++) arr4[i] = rand();
-    for(int i = 0; i < 5 * k; i++) arr5[i] = rand();
-    for(int i = 0; i < 6 * k; i++) arr6[i] = rand();
+    int k = 32000;
+    int *arr1 = (int *) malloc(sizeof(int)*k);
+    for(int i = 0; i < k; i++) arr1[i] = rand();
+    long long t1 = calculate_runtime(arr1, k);
 
-    printf("Random Initialization : \n");
-    printf("%lld\n", calculate_runtime(arr, k));
-    printf("%lld\n", calculate_runtime(arr2, 2 * k));
-    printf("%lld\n", calculate_runtime(arr3, 3 * k));
-    printf("%lld\n", calculate_runtime(arr4, 4 * k));
-    printf("%lld\n", calculate_runtime(arr5, 5 * k));
-    printf("%lld\n", calculate_runtime(arr6, 6 * k));
+    k = 64000;
+    int *arr2 = (int *) malloc(sizeof(int)*k);
+    for(int i = 0; i < k; i++) arr2[i] = rand();
+    long long t2 = calculate_runtime(arr2, k);
 
-    initialize_ascending(arr, k);
-    initialize_ascending(arr2, 2 * k);
-    initialize_ascending(arr3, 3 * k);
-    initialize_ascending(arr4, 4 * k);
-    initialize_ascending(arr5, 5 * k);
-    initialize_ascending(arr6, 6 * k);
-
-    printf("Ascending Order:\n");
-    printf("%lld\n", calculate_runtime(arr, k));
-    printf("%lld\n", calculate_runtime(arr2, 2 * k));
-    printf("%lld\n", calculate_runtime(arr3, 3 * k));
-    printf("%lld\n", calculate_runtime(arr4, 4 * k));
-    printf("%lld\n", calculate_runtime(arr5, 5 * k));
-    printf("%lld\n", calculate_runtime(arr6, 6 * k));
-
-    initialize_descending(arr, k);
-    initialize_descending(arr2, 2 * k);
-    initialize_descending(arr3, 3 * k);
-    initialize_descending(arr4, 4 * k);
-    initialize_descending(arr5, 5 * k);
-    initialize_descending(arr6, 6 * k);
-
-    printf("Descending Order:\n");
-    printf("%lld\n", calculate_runtime(arr, k));
-    printf("%lld\n", calculate_runtime(arr2, 2 * k));
-    printf("%lld\n", calculate_runtime(arr3, 3 * k));
-    printf("%lld\n", calculate_runtime(arr4, 4 * k));
-    printf("%lld\n", calculate_runtime(arr5, 5 * k));
-    printf("%lld\n", calculate_runtime(arr6, 6 * k));
-
-    free(arr);
-    free(arr2);
-    free(arr3);
-    free(arr4);
-    free(arr5);
-    free(arr6);
+    printf("%lf\n", t2*1.0 / t1);
     return 0;
 }

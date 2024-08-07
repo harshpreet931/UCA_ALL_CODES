@@ -7,7 +7,7 @@ extern int errno;
 
 int main() {
     // Attempt to open the file foo.txt in read-only mode, creating it if it does not exist
-    int fd = open("foo.txt", O_RDONLY | O_CREAT, S_IRUSR | S_IWUSR);
+    int fd = open("foo.txt", O_RDONLY | O_CREAT);
     printf("fd = %d \n", fd);
     
     if (fd == -1) {
