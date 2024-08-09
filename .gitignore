@@ -10,3 +10,8 @@ pg_config.sh
 # Compiled files
 a.out
 a.exe
+
+# Exlude .class files
+*.class
+.idea
+/out
