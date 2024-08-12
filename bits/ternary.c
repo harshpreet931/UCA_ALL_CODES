@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int ternary(int cond, int e1, int e2) {
-    int mask = -!!cond;
+    int mask = -cond;
     return (mask & e1) | (~mask & e2);
 }
 
