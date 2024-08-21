@@ -8,13 +8,13 @@ public class candy {
         int temp2[] = {1,2,2};
         int res2 = 4;
 
-        assert candy(temp1) == res1 : "Test Case 1 Failed";
-        assert candy(temp2) == res2 : "Test Case 2 Failed";
+        assert helper(temp1) == res1 : "Test Case 1 Failed";
+        assert helper(temp2) == res2 : "Test Case 2 Failed";
 
         System.out.println("All test cases passed!!");
     }
 
-    private static int candy(int[] ratings) {
+    private static int helper(int[] ratings) {
         int n = ratings.length;
         int[] candy = new int[n];
         Arrays.fill(candy, 1);

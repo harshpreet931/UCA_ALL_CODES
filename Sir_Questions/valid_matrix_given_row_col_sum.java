@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class valid_matrix_given_row_col_sum 
 {
     private static int[][] restoreMatrix(int[] rowSum, int[] colSum)  

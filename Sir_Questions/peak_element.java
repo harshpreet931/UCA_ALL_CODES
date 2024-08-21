@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class peak_element {
     private static int findPeakElement(int[] nums) {
         if(nums.length == 1) return 0;
