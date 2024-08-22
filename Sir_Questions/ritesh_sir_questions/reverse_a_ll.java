@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class reverse_a_ll
 {
     static class ll
