@@ -11,12 +11,13 @@ Welcome to my repository for all the UCA Codes I have written. This collection i
 - [Getting Started](#getting-started)
 - [Contact](#contact)
 
-<!-- Adding a clickable banner image to go to notes -->
-[![Click here to go to my notes](./banner.png)](https://harshpreet931.notion.site/C_Programming-4f4c37edcb794b49a43182b106ea6f1f?pvs=4)
-
 ## Introduction
 
 This repository contains a collection of C programs, including data structures, sorting algorithms, memory management techniques, and system calls. Each piece of code is well-documented and can be used as a reference for understanding the fundamental concepts of computer science.
+
+## Notion Notes
+
+[![Click here to go to my notes](./banner.png)](https://harshpreet931.notion.site/C_Programming-4f4c37edcb794b49a43182b106ea6f1f?pvs=4)
 
 ## Features
 
