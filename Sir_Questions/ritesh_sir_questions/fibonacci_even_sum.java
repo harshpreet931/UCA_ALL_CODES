@@ -17,5 +17,6 @@ public class fibonacci_even_sum {
         }
 
         System.out.println(sum);
+        sc.close();
     }
 }
