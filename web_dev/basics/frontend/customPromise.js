@@ -42,7 +42,7 @@ function promise(e) {
 
 let p = new promise((resolve, reject) => {
     setTimeout(() => {
-        let success = true;
+        let success = false;
         if(success) {
             resolve('Success');
         }
