@@ -44,6 +44,7 @@ public class testThread {
                 System.out.println(Thread.currentThread().getName() + " is adding " + i);
                 this.l.add(i);
             }
+            
             // Simulating some work Non-critical section
             try {
                 Thread.sleep(1000);
