@@ -5,9 +5,9 @@ void* custom_calloc(int num, int size) {
     void *ptr = malloc(num * size);
 
     for(int i = 0; i < num*size; i++) {
-        *((char *)ptr + i) = 0;
+        *((char *)ptr + i) = '\0';
     }
-    
+
     return ptr;
 }
 
