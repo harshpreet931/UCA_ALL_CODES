@@ -3,16 +3,14 @@ public class fibonacci_even_sum {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int a = 0, b = 1, c = 1;
+        int a = 1, b = 1, c = 2;
+        // every third number in fibonacci series is even
         int sum = 0;
 
         while(c <= n) {
-            if(c % 2 == 0) {
-                System.out.println(c);
-                sum += c;
-            }
-            a = b;
-            b = c;
+            sum += c;
+            a = b + c;
+            b = c + a;
             c = a + b;
         }
 
