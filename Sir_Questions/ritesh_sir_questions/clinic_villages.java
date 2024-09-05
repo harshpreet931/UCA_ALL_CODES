@@ -1,5 +1,5 @@
 import java.util.*;
-public class ClinicDistributionTest {
+public class clinic_villages {
     public static void main(String[] args) {
         System.out.println(minimizeMaxLoad(new int[]{100, 50, 200}, 4));
         assert minimizeMaxLoad(new int[]{100, 50, 200}, 4) == 100 : "Sir test case Failed";
@@ -10,6 +10,8 @@ public class ClinicDistributionTest {
         assert minimizeMaxLoad(new int[]{10, 20, 30, 40, 50}, 10) == 20 : "Test Case 5 Failed";
         assert minimizeMaxLoad(new int[]{60, 80, 70, 90}, 4) == 90 : "Test Case 6 Failed";
         assert minimizeMaxLoad(new int[]{100, 100, 100, 100}, 4) == 100 : "Test Case 7 Failed";
+        assert minimizeMaxLoad(new int[]{100, 50, 200}, 3) == 200 : "Test Case 8 Failed";
+        assert minimizeMaxLoad(new int[]{10,20,30,40,50,60}, 10) == 30 : "Test Case 9 Failed";
 
         System.out.println("All test cases passed!");
     }
