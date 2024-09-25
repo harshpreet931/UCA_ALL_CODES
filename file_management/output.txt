@@ -1,0 +1,3 @@
+Integer: 42
+Floating-point: 3.141590
+String: Hello, stdout!
