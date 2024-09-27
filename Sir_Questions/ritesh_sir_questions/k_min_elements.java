@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class k_min_elements 
 {   
