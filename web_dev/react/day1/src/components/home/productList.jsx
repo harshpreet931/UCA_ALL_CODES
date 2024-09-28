@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./style.css";
+import { Link } from "react-router-dom";
 
 function productList() {
 
@@ -13,6 +16,21 @@ function productList() {
 
     var [products, setProducts] = useState([]);
 
+
+    // useEffect -> used to perform side effects in the component
+    // side effects are the actions that are performed in the component
+    // [] -> used to run the useEffect only once when the component is rendered (dependency array) (componentDidMount)
+    // if we remove the [] then the useEffect will run on every render
+    // [productList] -> used to run the useEffect only when the productList is updated (componentDidUpdate)
+
+    useEffect(() => {
+        console.log('Componenet is rendered');
+        return () => { // cleanup function for teardown
+            console.log('Component is unmounted');
+        }
+    }, [productList]);
+
+
     // a function can return multiple elements through, array, objects, callbacks, etc
     
     setTimeout(() => {
@@ -25,12 +43,12 @@ function productList() {
 
     return (
         <>
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <table style={{border: '2px solid black', borderCollapse: 'collapse', width: '85%'}}>
+            <div id="cont">
+                <table>
                     <thead>
                         <tr>
-                            <th style={{border: '2px solid black'}}>Name</th>
-                            <th style={{border: '2px solid black'}}>Price</th>
+                            <th>Name</th>
+                            <th>Price</th>
                         </tr>
                     </thead>
                     
@@ -38,13 +56,15 @@ function productList() {
                         {products.map((product, index) => {
                             return (
                                 <tr key={index}>
-                                    <td style={{border: '2px solid black'}}>{product.name}</td>
-                                    <td style={{border: '2px solid black'}}>{product.price}</td>
+                                    <td>{product.name}</td>
+                                    <td>{product.price}</td>
                                 </tr>
                             )
                         })}
                     </tbody>
                 </table>
+                <Link to={"/signup"}>Sign Up</Link>
+
             </div>
         </>
     )

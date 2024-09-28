@@ -1,21 +1,22 @@
 // This is a normal function, it becomes a component when it is exported and used in the main file.
-import Header from "./header";
-import ProductList from "./productList";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./components/layout/layout";
+import routes from "./routes";
 
 function App() {
+
+    const router = createBrowserRouter(routes);
+
     return (
-        <>
-            <header>
-                <Header></Header>
-            </header>
-            
-            <main>
-                <ProductList></ProductList>
-            </main> 
-            
-            <footer>
-                
-            </footer>       
+        <> 
+            <Layout>
+                {/* main will be passed as props to Layout */}
+                {/* from child to parent a function in parent function called callback function is made to be called from the inner function */}
+                <main>
+                    <RouterProvider router={router}></RouterProvider>
+                </main>
+            </Layout>
         </>
     )
 }
