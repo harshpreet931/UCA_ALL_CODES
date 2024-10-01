@@ -1,4 +1,4 @@
-![Banner Image](./BannerImg.png)
+![Banner Image](./images/BannerImg.png)
 
 # UCA Codes Repository
 
@@ -17,7 +17,7 @@ This repository contains a collection of C programs, including data structures, 
 
 ## Notion Notes
 
-[![Click here to go to my notes](./banner.png)](https://harshpreet931.notion.site/C_Programming-4f4c37edcb794b49a43182b106ea6f1f?pvs=4)
+[![Click here to go to my notes](./images/banner.png)](https://harshpreet931.notion.site/C_Programming-4f4c37edcb794b49a43182b106ea6f1f?pvs=4)
 
 ## Features
 
