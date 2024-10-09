@@ -3,17 +3,18 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100vw;
+    width: 80%;
     padding: 20px;
     font-family: Arial, sans-serif;
 }
 
 table {
     border-collapse: collapse;
-    width: 85%;
+    width: 100%;
     margin: 20px 0;
     border: 2px solid #333;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
 }
 
 th, td {

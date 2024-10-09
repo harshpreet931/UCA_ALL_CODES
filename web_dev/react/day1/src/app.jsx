@@ -9,14 +9,8 @@ function App() {
     const router = createBrowserRouter(routes);
 
     return (
-        <> 
-            <Layout>
-                {/* main will be passed as props to Layout */}
-                {/* from child to parent a function in parent function called callback function is made to be called from the inner function */}
-                <main>
-                    <RouterProvider router={router}></RouterProvider>
-                </main>
-            </Layout>
+        <>
+            <RouterProvider router={router}></RouterProvider>
         </>
     )
 }

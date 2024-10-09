@@ -4,6 +4,7 @@
 // interpolation is used to pass the data dynamically to the component
 
 import { Link } from "react-router-dom";
+import Button from "./elements/button";
 
 function Header() {
     let title = "Product List";
@@ -17,7 +18,7 @@ function Header() {
 
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="/">Navbar</a>
+                    <Link className="navbar-brand" to={'/'}>Harsh's Dungeon</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>
@@ -44,8 +45,18 @@ function Header() {
                         <a className="nav-link disabled" aria-disabled="true">Disabled</a>
                         </li>
                     </ul>
-                    {/* Signup button */}
-                    {/* <Link to={"/signup"}>Sign Up</Link> */}
+                    {/* <button className="btn btn-outline-success" type="submit">
+                        <Link to={'/signup'} className="nav-link">SignUp</Link>
+                    </button>
+                    <button className="btn btn-outline-success" type="submit">
+                        <Link to={'/signin'} className="nav-link">SignIn</Link>
+                    </button> */}
+                    <Button>
+                        <Link to={'/signup'} className="nav-link">SignUp</Link>
+                    </Button>
+                    <Button>
+                        <Link to={'/signin'} className="nav-link">SignIn</Link>
+                    </Button>
                     </div>
                 </div>
             </nav>

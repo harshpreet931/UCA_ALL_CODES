@@ -63,8 +63,6 @@ function productList() {
                         })}
                     </tbody>
                 </table>
-                <Link to={"/signup"}>Sign Up</Link>
-
             </div>
         </>
     )

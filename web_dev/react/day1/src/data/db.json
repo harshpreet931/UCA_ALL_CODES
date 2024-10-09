@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "name": "John Doe Modified",
+      "email": "john.doe@example.com",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com"
+    },
+    {
+      "id": "2b76",
+      "firstName": "Harshpreet",
+      "lastName": "Singh",
+      "email": "harshpreet393.be22@chitkara.edu.in",
+      "password": "sadasd"
+    },
+    {
+      "id": "8e1e",
+      "firstName": "Harshpreet",
+      "lastName": "Singh",
+      "email": "harshpreet393.be22@chitkara.edu.in",
+      "password": "sad"
+    },
+    {
+      "id": "f1b3",
+      "firstName": "Harshpreet",
+      "lastName": "Singh",
+      "email": "harshpreet393.be22@chitkara.edu.in",
+      "password": "sda"
+    },
+    {
+      "id": "55db",
+      "firstName": "Harshpreet",
+      "lastName": "Singh",
+      "email": "harshpreet393.be22@chitkara.edu.in",
+      "password": "sd"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "title": "Hello World",
+      "content": "This is my first post!",
+      "userId": 1
+    },
+    {
+      "id": "2",
+      "title": "Another Post",
+      "content": "This is another post.",
+      "userId": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "postId": 1,
+      "content": "Great post!",
+      "userId": 2
+    },
+    {
+      "id": "2",
+      "postId": 2,
+      "content": "Thanks for sharing.",
+      "userId": 1
+    }
+  ]
+}
