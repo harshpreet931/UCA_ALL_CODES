@@ -2,6 +2,7 @@ import ProductList from "./components/home/productList"
 import SignUp from "./components/signup/signup"
 import SignIn from "./components/signin/signin"
 import Layout from "./components/layout/layout";
+import ManageProduct from "./components/manageProduct/manageProduct";
 
 const routes = [
     {
@@ -20,6 +21,10 @@ const routes = [
             {
                 path: '/signin',
                 element: <SignIn></SignIn>
+            },
+            {
+                path: '/manageProduct',
+                element: <ManageProduct></ManageProduct>
             }
         ]
     }

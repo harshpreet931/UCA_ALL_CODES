@@ -52,6 +52,9 @@ function Header() {
                         <Link to={'/signin'} className="nav-link">SignIn</Link>
                     </button> */}
                     <Button>
+                        <Link to={'/manageProduct'} className="nav-link">Add Product</Link>
+                    </Button>
+                    <Button>
                         <Link to={'/signup'} className="nav-link">SignUp</Link>
                     </Button>
                     <Button>

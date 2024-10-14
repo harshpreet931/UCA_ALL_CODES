@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "../elements/button";
 
-function productList() {
-
+function ProductList() {
+    const navigate = useNavigate();
+    // const navigateToEdit = () => {
+    //     console.log('Navigating to edit');
+    // }
     // setTimeout(() => {
     //     var products = [{name: 'Product 4', price: 400}, {name: 'Product 5', price: 500}, {name: 'Product 6', price: 600}];
     // }, 2000);
@@ -24,22 +28,35 @@ function productList() {
     // [productList] -> used to run the useEffect only when the productList is updated (componentDidUpdate)
 
     useEffect(() => {
-        console.log('Componenet is rendered');
+        console.log('Component is rendered');
         return () => { // cleanup function for teardown
             console.log('Component is unmounted');
         }
-    }, [productList]);
+    }, []);
 
 
     // a function can return multiple elements through, array, objects, callbacks, etc
     
-    setTimeout(() => {
-        setProducts([{name: 'Product 1', price: 400}, {name: 'Product 2', price: 500}, {name: 'Product 3', price: 600}]);
-    }, 1000);
+    // setTimeout(() => {
+    //     setProducts([{name: 'Product 1', price: 400}, {name: 'Product 2', price: 500}, {name: 'Product 3', price: 600}]);
+    // }, 1000);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/products')
+            .then(response => response.json())
+            .then(data => setProducts(data));
+    }, []);
 
     // 2 hooks useState and useRef are used to update the state and to refer to the DOM elements
     // useState is used to update the state of the component
     // useRef is used to refer to the DOM elements 
+
+    // New function to handle editing a product
+    const handleEdit = (product) => {
+        sessionStorage.setItem('editingProduct', JSON.stringify(product));
+        sessionStorage.setItem('isEditing', 'true');
+        navigate('/manageProduct');
+    };
 
     return (
         <>
@@ -49,26 +66,38 @@ function productList() {
                         <tr>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     
                     <tbody>
-                        {products.map((product, index) => {
+                        {products.map((product) => {
                             return (
-                                <tr key={index}>
+                                <tr key={product.id}>
                                     <td>{product.name}</td>
                                     <td>{product.price}</td>
+                                    <td>
+                                        <button onClick={() => handleEdit(product)}>Edit</button>
+                                    </td>
                                 </tr>
                             )
                         })}
                     </tbody>
                 </table>
             </div>
+            <Link to="/manageProduct">
+                <Button onClick={() => {
+                    sessionStorage.removeItem('editingProduct');
+                    sessionStorage.setItem('isEditing', 'false');
+                }}>
+                    Add New Product
+                </Button>
+            </Link>
         </>
     )
 }
 
-export default productList;
+export default ProductList;
 
 // Table explanation
 // tr - table row
