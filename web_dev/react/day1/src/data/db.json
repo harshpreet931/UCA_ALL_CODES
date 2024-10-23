@@ -69,29 +69,9 @@
   ],
   "products": [
     {
-      "name": "Product 1",
-      "price": "1000",
-      "id": "1"
-    },
-    {
-      "id": "2",
-      "name": "Product 2",
-      "price": 200
-    },
-    {
-      "name": "ASjlkd",
-      "price": "100",
-      "id": "0ef9"
-    },
-    {
-      "name": "HARSH",
-      "price": "12342290",
-      "id": "34dd"
-    },
-    {
-      "id": "d4e1",
-      "name": "asdas",
-      "price": "1000000"
+      "name": "Hello",
+      "price": "12345",
+      "id": "d4e1"
     },
     {
       "id": "61ea",
@@ -107,6 +87,11 @@
       "id": "65fa",
       "name": "xdas",
       "price": "1342"
+    },
+    {
+      "id": "bcd4",
+      "name": "World",
+      "price": "123"
     }
   ]
 }

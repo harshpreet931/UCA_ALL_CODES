@@ -58,6 +58,26 @@ function ProductList() {
         navigate('/manageProduct');
     };
 
+    const handleDelete = (product) => {
+        // confirm dialog box
+        const toDel = window.confirm('Are you sure you want to delete this product?');
+        if(toDel)
+        {
+            fetch(`http://localhost:3000/products/${product.id}`, {
+                method: 'DELETE',
+            }).then(response => {
+                if (response.status === 200) {
+                    setProducts(products.filter(p => p.id !== product.id));
+                }
+            }
+            );
+        }   
+    }
+
+    // event.preventDefault() -> used to prevent the default behavior of the event
+    // we convert body to String using JSON.stringify() because the body should be a string cause the server only understands the string\
+    // key props are used to uniquely identify the elements in the list plus they are used to Remount the component, if the key is changed the component will be remounted
+    
     return (
         <>
             <div id="cont">
@@ -78,6 +98,7 @@ function ProductList() {
                                     <td>{product.price}</td>
                                     <td>
                                         <button onClick={() => handleEdit(product)}>Edit</button>
+                                        <button onClick={() => handleDelete(product)}>Delete</button>
                                     </td>
                                 </tr>
                             )
