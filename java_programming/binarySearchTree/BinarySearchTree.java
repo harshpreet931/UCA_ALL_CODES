@@ -191,6 +191,18 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value>
         preorder_traversal(root.right);
     }
 
+    private Key getMin(Node root)
+    {
+        if(root.left == null) return root.key;
+        return getMin(root.left);
+    }
+
+    private Key getMax(Node root)
+    {
+        if(root.right == null) return root.key;
+        return getMax(root.right);
+    }
+
     public static void main(String[] args) {
         BinarySearchTree<A, Integer> bst = new BinarySearchTree<A, Integer>();
         A a = new A();
