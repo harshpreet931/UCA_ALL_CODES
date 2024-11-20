@@ -1,3 +1,5 @@
+package binarySearchTree;
+
 import java.util.*;
 
 public class BST_RiteshSir<K extends Comparable<K>, V> 
@@ -136,6 +138,40 @@ public class BST_RiteshSir<K extends Comparable<K>, V>
     }
 
     // Task: Convert BST to a sorted circular doubly linked list
+    private Node prev, head;
+    public Node treeToDoubleLinkedList(Node root) 
+    {
+        if(root == null) return null;
+
+        prev = null; head = null;
+
+        inorder_helper(root);
+
+        prev.right = head;
+        head.left = prev;
+
+        return head;
+    }
+
+    private void inorder_helper(Node root)
+    {
+        if(root == null) return;
+
+        inorder_helper(root.left);
+
+        if(prev == null)
+            head = root;
+        else
+        {
+            root.left = prev;
+            prev.right = root;
+        }
+
+        prev = root;
+
+        inorder_helper(root.right);
+    }
+
 
     public static void main(String[] args) {
         BST_RiteshSir<Integer, String> bst = new BST_RiteshSir<>();
@@ -146,14 +182,22 @@ public class BST_RiteshSir<K extends Comparable<K>, V>
         bst.insert(6, null);
         bst.insert(7, null);
         bst.insert(8, null);
+        bst.insert(-1, null);
+        bst.insert(-10, null);
+        bst.insert(25, null);
 
         System.out.println(bst.getMin());
         bst.deleteMin();
-        System.out.println(bst.getMin());
-        bst.deleteMin();
-        System.out.println(bst.getMin());
-        bst.deleteMin();    
-        System.out.println(bst.getMin());
+        
+        // doubly ll check
+        BST_RiteshSir<Integer, String>.Node head = bst.treeToDoubleLinkedList(bst.root);
+        BST_RiteshSir<Integer, String>.Node temp = head;
+        do
+        {
+            System.out.print(temp.key + " ");
+            temp = temp.right;
+        } while(temp != head);
+
 
     }
 }
