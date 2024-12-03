@@ -2,8 +2,10 @@ package BankExercise;
 
 public class Bank {
     int balance;
+    int activeUsers = 0;
 
     public Bank() {
-        balance = 0;
+        balance = 500;
+        activeUsers = 0;
     }
 }

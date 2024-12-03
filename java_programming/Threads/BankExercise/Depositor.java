@@ -10,11 +10,29 @@ public class Depositor extends Thread{
 
     public void run()
     {
-        synchronized (bank)
+        while(true)
         {
-            int deposit = (int) (Math.random() * 100);
-            bank.balance += deposit;
-            System.out.println("Deposited: " + deposit + " Balance: " + bank.balance);
+            synchronized (bank)
+            {
+                int deposit = (int) (Math.random() * 50);
+                bank.balance += deposit;
+                System.out.println("Deposited: " + deposit + " Balance: " + bank.balance + " Thread:" + Thread.currentThread().getName());
+                bank.notifyAll();
+            }
+
+            try
+            {
+                Thread.sleep(1000);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+
+            if(bank.activeUsers == 0)
+            {
+                break;
+            }
         }
     }
 }
